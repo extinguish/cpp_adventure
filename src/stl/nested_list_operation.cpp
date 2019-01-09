@@ -5,7 +5,7 @@
 /// we need to create the following form of nested list
 /// Input :  Number of lists: 2
 /// 1st list: {1 2}
-/// 2nd list:  {3 4 5 6
+/// 2nd list:  {3 4 5 6}
 /// Output :
 /// [
 ///   [ 1  2 ]

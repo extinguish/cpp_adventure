@@ -11,8 +11,9 @@ using std::experimental::string_view;
 
 using std::cin;
 using std::cout;
+using std::endl;
 
-int main(void) {
+int main(int argc, char **argv) {
     string first_str = "first string";
     string_view second_str_view = first_str;
     cout << "first string are " << first_str << endl

@@ -1,4 +1,8 @@
-## The Android toolbox source code
+
+
+
+----------------------------------------------------------
+### The Android toolbox source code
 
 this directory mainly contains the source code of the `AOSP/system/core/toolbox`,
 for example the android version of `ls.c`, `ps.c` program.
@@ -11,7 +15,7 @@ So we need to caution with the compile tool-chain.
 
 ----------------------------------------------------------
 
-## 关于c++当中为什么不允许`static const double`的存在的讨论:
+### 关于c++当中为什么不允许`static const double`的存在的讨论:
 
 In C++03 we were only allowed to provide an in class initializer for `static member variables`
 of `const integral` of `enumeration types`, in `C++11` we could initialize a static member 

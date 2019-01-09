@@ -30,7 +30,7 @@ static void print_gid(gid_t gid) {
     }
 }
 
-int id_main(int argc, char** argv) {
+int main(int argc, char** argv) {
     gid_t list[64];
     int n, max;
 

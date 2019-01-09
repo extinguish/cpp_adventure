@@ -14,7 +14,7 @@ public:
 
     /// the following will not compile
     /// 但是我们可以通过constexpr来进行修复
-    static const double val_double = 2300.0;
+    // static const double val_double = 2300.0;
 
     /// 此时就可以编译通过了
     /// 但是constexpr是c++11引入的特性

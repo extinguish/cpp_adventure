@@ -12,3 +12,6 @@
 /// template <class T, class Deleter>
 /// class unique_ptr<T[], Deleter>;
 
+int main(int argc, char **argv) {
+
+}

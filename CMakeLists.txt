@@ -1,26 +1,36 @@
 cmake_minimum_required(VERSION 3.12)
-project(AndroidInternalTools C)
+project(CppAdventure)
 
-set(CMAKE_C_STANDARD 99)
+# set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AndroidInternalTools main.c
-        src/fake_ls.c src/fake_id.c src/uptime.c
-        src/simple_writer.c src/simple_reader.c
-        src/copy_constructor.cpp
-        src/rtti_test.cpp
-        src/private_virtual_func.cpp
-        src/private_virtual_fun_2.cpp
-        src/no_main_program.c
-        src/private_virtual_inline_func.cpp
-        src/static_field_evaluate.cpp
-        src/virtual_constructor.cpp
-        src/virtual_copy_constructor.cpp
-        src/algo/dynamic_programming.cpp src/stl/list_operation.cpp
-        src/stl/nested_list_operation.cpp
-        src/stl/array_algorithm.cpp
-        src/io_operation/basic_file_op.cpp
-        src/stl/copy_vector.cpp
-        src/memory_manage/unique_ptr_adventure.cpp
-        trick_test.cpp
-        src/cpp_17/string_view_adventure.cpp
-        src/StrVec.cpp src/static_field_test.cpp)
+add_executable(CppAdventure main.c)
+
+
+add_executable(fake_ls src/fake_ls.c)
+add_executable(fake_id src/fake_id.c)
+# add_executable(uptime src/uptime.c)
+add_executable(simple_write src/simple_writer.c)
+add_executable(simple_read src/simple_reader.c)
+add_executable(copy_constructor src/copy_constructor.cpp)
+add_executable(rtti_test src/rtti_test.cpp)
+add_executable(private_virtual_fun_1 src/private_virtual_func.cpp)
+add_executable(private_virtual_fun_2 src/private_virtual_fun_2.cpp)
+# the no_main_program need to use the gcc tool to compile
+# add_executable(no_main_program src/no_main_program.c)
+add_executable(virtual_inline_func src/private_virtual_inline_func.cpp)
+add_executable(static_field_eval src/static_field_evaluate.cpp)
+add_executable(virtual_constructor src/virtual_constructor.cpp)
+add_executable(virtual_copy_constructor src/virtual_copy_constructor.cpp)
+add_executable(dynamic_programming src/algo/dynamic_programming.cpp)
+add_executable(list_op src/stl/list_operation.cpp)
+add_executable(nest_list_op src/stl/nested_list_operation.cpp)
+add_executable(arr_algo_test src/stl/array_algorithm.cpp)
+add_executable(file_io_test src/io_operation/basic_file_op.cpp)
+add_executable(copy_vec_test src/stl/copy_vector.cpp)
+add_executable(uniq_pointer_test src/memory_manage/unique_ptr/unique_ptr_adventure.cpp)
+add_executable(trick_test.cpp)
+add_executable(str_view_test src/cpp_17/string_view_adventure.cpp)
+add_executable(str_vec_test src/StrVec.cpp)
+add_executable(static_field_test src/static_field_test.cpp)
+add_executable(polyphism_test src/oop_design/PolyphismTricks.cpp)
