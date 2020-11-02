@@ -322,7 +322,9 @@ namespace android {
         }
 
         size_t new_allocation_size = 0;
-        LOG_ALWAYS_FATAL_IF(__builtin_mul_overflow(new_capacity, mItemSize, &new_allocation_size));
+        if (__builtin_mul_overflow(new_capacity, mItemSize, &new_allocation_size)) {
+            return -1;
+        }
         SharedBuffer *sb = SharedBuffer::alloc(new_allocation_size);
         if (sb) {
             void *array = sb->data();
@@ -359,12 +361,16 @@ namespace android {
 //    ALOGV("_grow(this=%p, where=%d, amount=%d) count=%d, capacity=%d",
 //        this, (int)where, (int)amount, (int)mCount, (int)capacity());
 
-        ALOG_ASSERT(where <= mCount,
-                    "[%p] _grow: where=%d, amount=%d, count=%d",
-                    this, (int) where, (int) amount, (int) mCount); // caller already checked
+        if (where <= mCount) {
+            LOGE("[%p] _grow: where=%d, amount=%d, count=%d", this, (int) where, (int) amount,
+                 (int) mCount); // caller already checked
+        }
+
 
         size_t new_size;
-        LOG_ALWAYS_FATAL_IF(__builtin_add_overflow(mCount, amount, &new_size), "new_size overflow");
+        if (__builtin_add_overflow(mCount, amount, &new_size)) {
+            LOGE("new_size overflow");
+        }
 
         if (capacity() < new_size) {
             // NOTE: This implementation used to resize vectors as per ((3*x + 1) / 2)
@@ -375,16 +381,19 @@ namespace android {
             //
             // This approximates the old calculation, using (x + (x/2) + 1) instead.
             size_t new_capacity = 0;
-            LOG_ALWAYS_FATAL_IF(__builtin_add_overflow(new_size, (new_size / 2), &new_capacity),
-                                "new_capacity overflow");
-            LOG_ALWAYS_FATAL_IF(
-                    __builtin_add_overflow(new_capacity, static_cast<size_t>(1u), &new_capacity),
-                    "new_capacity overflow");
+
+            if (__builtin_add_overflow(new_size, (new_size / 2), &new_capacity)) {
+                LOGE("new_capacity overflow");
+            }
+            if (__builtin_add_overflow(new_capacity, static_cast<size_t>(1u), &new_capacity)) {
+                LOGE("new_capacity overflow");
+            }
             new_capacity = max(kMinVectorCapacity, new_capacity);
 
             size_t new_alloc_size = 0;
-            LOG_ALWAYS_FATAL_IF(__builtin_mul_overflow(new_capacity, mItemSize, &new_alloc_size),
-                                "new_alloc_size overflow");
+            if (__builtin_mul_overflow(new_capacity, mItemSize, &new_alloc_size)) {
+                LOGE("new_alloc_size overflow");
+            }
 
             // ALOGV("grow vector %p, new_capacity=%d", this, (int)new_capacity);
             if ((mStorage) &&
@@ -436,12 +445,18 @@ namespace android {
 //    ALOGV("_shrink(this=%p, where=%d, amount=%d) count=%d, capacity=%d",
 //        this, (int)where, (int)amount, (int)mCount, (int)capacity());
 
-        ALOG_ASSERT(where + amount <= mCount,
-                    "[%p] _shrink: where=%d, amount=%d, count=%d",
-                    this, (int) where, (int) amount, (int) mCount); // caller already checked
+        if (where + amount <= mCount) {
+            LOGE("[%p] _shrink: where=%d, amount=%d, count=%d",
+                 this, (int) where, (int) amount, (int) mCount); // caller already checked
+        }
+
 
         size_t new_size;
-        LOG_ALWAYS_FATAL_IF(__builtin_sub_overflow(mCount, amount, &new_size));
+
+        if (__builtin_sub_overflow(mCount, amount, &new_size)) {
+            LOGE("overflow");
+            return;
+        }
 
         if (new_size < (capacity() / 2)) {
             // NOTE: (new_size * 2) is safe because capacity didn't overflow and

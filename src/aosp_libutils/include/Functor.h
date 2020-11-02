@@ -22,7 +22,7 @@
 namespace android {
 
 // DO NOT USE: please use
-// - C++ lambda
+// - C++ lambda_adventure
 // - class with well-defined and specific functionality and semantics
 
     class Functor {

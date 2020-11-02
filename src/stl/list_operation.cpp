@@ -64,6 +64,7 @@ void test_list_op() {
     test_list_1.reverse();
     cout << "reverse the first list " << endl;
     show_list(test_list_1);
+    test_list_1.clear();
 }
 
 ///  g++ -std=c++11 -o list_operation list_operation.cpp

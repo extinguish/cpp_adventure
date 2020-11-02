@@ -1,0 +1,49 @@
+//
+// Created by guoshichao on 20-1-19.
+//
+#include <iostream>
+#include <stdio.h>
+#include <cstring>
+
+void printBuf(unsigned char *msg, const size_t msgLen);
+
+void parseBuffer(const unsigned char *buffer, size_t length) {
+    int begin = 0;
+    int messageLen = 0;
+    for (int i = 0; i < length; i++) {
+        if (buffer[i] == 0x7e) {
+            messageLen = i - begin;
+            if (messageLen != 0) {
+                unsigned char tempBuffer[messageLen + 1];
+                memset(tempBuffer, 0, messageLen + 1);
+                memcpy(tempBuffer, buffer + begin, messageLen + 1);
+                printBuf(tempBuffer, messageLen + 1);
+
+                begin = i + 1;
+            }
+        }
+    }
+}
+
+void printBuf(unsigned char *msg, const size_t msgLen) {
+    printf("\non new message --> \n");
+    printf("[ ");
+    for (int i = 0; i < msgLen; ++i) {
+        printf("%02x ", msg[i]);
+    }
+    printf("]");
+    printf("\nend of new message");
+}
+
+int main(int argc, char **argv) {
+    unsigned char buf[] = {0x7e, 0x91, 0x01, 0x00, 0x16, 0x01, 0x06, 0x46, 0x32, 0x23, 0x46,
+                           0x04, 0xc6, 0x0e, 0x33, 0x39, 0x2e, 0x31, 0x30, 0x35, 0x2e, 0x31,
+                           0x34, 0x37, 0x2e, 0x31, 0x39, 0x35, 0x23, 0x28, 0x23, 0x28, 0x01,
+                           0x01, 0x00, 0x43, 0x7e, 0x7e, 0x90, 0x03, 0x00, 0x00, 0x01, 0x06,
+                           0x46, 0x32, 0x23, 0x46, 0x04, 0xc7, 0x46, 0x7e, 0x7e, 0x91, 0x01,
+                           0x00, 0x16, 0x01, 0x06, 0x46, 0x32, 0x23, 0x46, 0x04, 0xc8, 0x0e,
+                           0x33, 0x39, 0x2e, 0x31, 0x30, 0x35, 0x2e, 0x31, 0x34, 0x37, 0x2e,
+                           0x31, 0x39, 0x35, 0x23, 0x28, 0x23, 0x28, 0x02, 0x01, 0x00, 0x4e, 0x7e};
+    parseBuffer(buf, sizeof(buf));
+}
+

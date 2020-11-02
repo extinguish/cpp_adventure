@@ -35,6 +35,6 @@ int main(int argc, char **argv) {
     epoll.eventLoop();
     UploadLocalData uploadDataListener;
     epoll.setEpollEventListener(&uploadDataListener);
-    epoll.updateEvent()
+    // epoll.updateEvent()
     return 0;
 }

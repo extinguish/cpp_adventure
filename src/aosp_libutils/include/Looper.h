@@ -62,14 +62,14 @@ namespace android {
     };
 
 
-/**
- * Interface for a Looper message handler.
- *
- * The Looper holds a strong reference to the message handler whenever it has
- * a message to deliver to it.  Make sure to call Looper::removeMessages
- * to remove any pending messages destined for the handler so that the handler
- * can be destroyed.
- */
+    /**
+    * Interface for a Looper message handler.
+    *
+    * The Looper holds a strong reference to the message handler whenever it has
+    * a message to deliver to it.  Make sure to call Looper::removeMessages
+    * to remove any pending messages destined for the handler so that the handler
+    * can be destroyed.
+    */
     class MessageHandler : public virtual RefBase {
     protected:
         virtual ~MessageHandler();

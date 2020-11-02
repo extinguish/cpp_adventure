@@ -24,7 +24,7 @@
 
 #include "include/RefBase.h"
 
-#include "include/CallStack.h"
+// #include "include/CallStack.h"
 
 #include "include/Mutex.h"
 
@@ -717,7 +717,7 @@ namespace android {
             // Treating this as fatal is prone to causing boot loops. For debugging, it's
             // better to treat as non-fatal.
             LOGE("RefBase: Explicit destruction, weak count = %d (in %p)", mRefs->mWeak.load(), this);
-            CallStack::logStack(LOG_TAG);
+            // CallStack::logStack(LOG_TAG);
 #else
             LOG_ALWAYS_FATAL("RefBase: Explicit destruction, weak count = %d", mRefs->mWeak.load());
 #endif

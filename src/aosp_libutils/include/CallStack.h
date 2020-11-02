@@ -20,7 +20,7 @@
 #include "Log.h"
 #include <memory>
 
-#include <backtrace/backtrace_constants.h>
+// #include <backtrace/backtrace_constants.h>
 #include "String8.h"
 #include "Vector.h"
 
@@ -59,12 +59,12 @@ public:
 
     // Immediately collect the stack traces for the specified thread.
     // The default is to dump the stack of the current call.
-    void update(int32_t ignoreDepth = 1, pid_t tid = BACKTRACE_CURRENT_THREAD);
+//    void update(int32_t ignoreDepth = 1, pid_t tid = BACKTRACE_CURRENT_THREAD);
 
     // Dump a stack trace to the log using the supplied logtag.
-    void log(const char* logtag,
-             android_LogPriority priority = ANDROID_LOG_DEBUG,
-             const char* prefix = nullptr) const;
+//    void log(const char* logtag,
+//             android_LogPriority priority = ANDROID_LOG_DEBUG,
+//             const char* prefix = nullptr) const;
 
     // Dump a stack trace to the specified file descriptor.
     void dump(int fd, int indent = 0, const char* prefix = nullptr) const;
