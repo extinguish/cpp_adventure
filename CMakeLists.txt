@@ -287,7 +287,9 @@ add_executable(scanf_test src/ScanfTest.cpp)
 
 add_executable(rtp_send_test src/rtp_send_test.cpp src/RtpSend.cpp)
 
+add_executable(split_str src/split_str.cpp)
 
+add_executable(std_str_op src/std_str_op.cpp)
 
 
 
