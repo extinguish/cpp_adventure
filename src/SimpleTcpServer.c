@@ -8,7 +8,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
-#include <zconf.h>
+// #include <zconf.h>
 #include <stdio.h>
 
 #define MAX 80

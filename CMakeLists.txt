@@ -31,6 +31,7 @@ add_executable(file_io_test src/io_operation/basic_file_op.cpp)
 add_executable(copy_vec_test src/stl/copy_vector.cpp)
 add_executable(uniq_pointer_test src/memory_manage/unique_ptr/unique_ptr_adventure.cpp)
 add_executable(trick trick_test.cpp)
+add_executable(trick1 trick_test_1.cpp)
 add_executable(str_view_test src/cpp_17/string_view_adventure.cpp)
 add_executable(str_vec_test src/StrVec.cpp)
 add_executable(static_field_test src/static_field_test.cpp)
@@ -290,6 +291,16 @@ add_executable(rtp_send_test src/rtp_send_test.cpp src/RtpSend.cpp)
 add_executable(split_str src/split_str.cpp)
 
 add_executable(std_str_op src/std_str_op.cpp)
+
+add_executable(process_manage src/linux_process/process_manage.cpp)
+
+add_executable(fork_buf_test src/linux_process/fork_and_buffer.cpp)
+
+add_executable(sizeof_impl src/linux_process/size_of_impl.cpp)
+
+add_executable(func_test src/cpp_functional/function.cpp)
+
+add_executable(bind_test src/cpp_functional/bind_func.cpp)
 
 
 
